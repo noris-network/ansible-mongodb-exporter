@@ -113,7 +113,7 @@
     group: "{{ mongodb_exporter_system_groups[0] }}"
     state: link
     mode: 0750
-  when: "{{ mongodb_exporter_version is version('0.20.0', '>') }}"
+  when: "mongodb_exporter_version is version('0.20.0', '>')"
   notify:
     - restart mongodb exporter
 
@@ -134,6 +134,6 @@
     dest: /etc/systemd/system/mongodb_exporter.service
     owner: root
     group: root
-    mode: 0644
+    mode: 0640
   notify:
     - restart mongodb exporter
